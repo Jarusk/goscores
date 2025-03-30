@@ -18,7 +18,7 @@ type Match struct {
 	AwayPoints   int
 	Segment      int
 	SegmentUnit  string
-	SegmentClock time.Duration
+	SegmentClock string
 	Start        time.Time
 	State        MatchState
 }

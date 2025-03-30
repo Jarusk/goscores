@@ -363,8 +363,11 @@
                 ],
                 "logo": "https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/fla.png"
               },
-              "score": "0",
+              "score": "1",
               "linescores": [
+                {
+                  "value": 1.0
+                },
                 {
                   "value": 0.0
                 }
@@ -373,17 +376,17 @@
                 {
                   "name": "saves",
                   "abbreviation": "SV",
-                  "displayValue": "1"
+                  "displayValue": "11"
                 },
                 {
                   "name": "savePct",
                   "abbreviation": "SV%",
-                  "displayValue": "1.000"
+                  "displayValue": ".846"
                 },
                 {
                   "name": "goals",
                   "abbreviation": "G",
-                  "displayValue": "0"
+                  "displayValue": "1"
                 },
                 {
                   "name": "ytdGoals",
@@ -393,12 +396,199 @@
                 {
                   "name": "assists",
                   "abbreviation": "A",
-                  "displayValue": "0"
+                  "displayValue": "2"
                 },
                 {
                   "name": "points",
                   "abbreviation": "PTS",
-                  "displayValue": "0"
+                  "displayValue": "3"
+                }
+              ],
+              "leaders": [
+                {
+                  "name": "goals",
+                  "displayName": "Goals",
+                  "shortDisplayName": "Goals",
+                  "abbreviation": "G",
+                  "leaders": [
+                    {
+                      "displayValue": "1",
+                      "value": 1.0,
+                      "athlete": {
+                        "id": "3114722",
+                        "fullName": "Sam Reinhart",
+                        "displayName": "Sam Reinhart",
+                        "shortName": "S. Reinhart",
+                        "links": [
+                          {
+                            "rel": [
+                              "playercard",
+                              "desktop",
+                              "athlete"
+                            ],
+                            "href": "https://www.espn.com/nhl/player/_/id/3114722"
+                          }
+                        ],
+                        "headshot": "https://a.espncdn.com/i/headshots/nhl/players/full/3114722.png",
+                        "jersey": "13",
+                        "position": {
+                          "abbreviation": "C"
+                        },
+                        "team": {
+                          "id": "26"
+                        },
+                        "active": true
+                      },
+                      "team": {
+                        "id": "26"
+                      },
+                      "statistics": [
+                        {
+                          "name": "saves",
+                          "displayName": "Saves",
+                          "shortDisplayName": "Saves",
+                          "description": "Total saves.",
+                          "abbreviation": "SV",
+                          "value": 0.0,
+                          "displayValue": "0"
+                        },
+                        {
+                          "name": "savePct",
+                          "displayName": "Save Percentage",
+                          "shortDisplayName": "Save Percentage",
+                          "description": "Percentage of shots saved.",
+                          "abbreviation": "SV%",
+                          "value": 0.0,
+                          "displayValue": ".000"
+                        },
+                        {
+                          "name": "plusMinus",
+                          "displayName": "Plus/Minus Rating",
+                          "shortDisplayName": "Plus/Minus",
+                          "description": "Plus/Minus Rating",
+                          "abbreviation": "+/-",
+                          "value": 1.0,
+                          "displayValue": "1"
+                        },
+                        {
+                          "name": "goals",
+                          "displayName": "Goals",
+                          "shortDisplayName": "Goals",
+                          "description": "Total goals scored.",
+                          "abbreviation": "G",
+                          "value": 1.0,
+                          "displayValue": "1"
+                        },
+                        {
+                          "name": "ytdGoals",
+                          "displayName": "Year to Date Goals",
+                          "shortDisplayName": "Year to Date Goals",
+                          "description": "Year to date goals/",
+                          "abbreviation": "YTDG",
+                          "value": 36.0,
+                          "displayValue": "36"
+                        },
+                        {
+                          "name": "assists",
+                          "displayName": "Assists",
+                          "shortDisplayName": "Assists",
+                          "description": "Total goal assists.",
+                          "abbreviation": "A",
+                          "value": 0.0,
+                          "displayValue": "0"
+                        },
+                        {
+                          "name": "points",
+                          "displayName": "Points",
+                          "shortDisplayName": "Points",
+                          "description": "Points",
+                          "abbreviation": "PTS",
+                          "value": 1.0,
+                          "displayValue": "1"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "assists",
+                  "displayName": "Assists",
+                  "shortDisplayName": "Assists",
+                  "abbreviation": "A",
+                  "leaders": [
+                    {
+                      "displayValue": "1",
+                      "value": 1.0,
+                      "athlete": {
+                        "id": "3041970",
+                        "fullName": "Aleksander Barkov",
+                        "displayName": "Aleksander Barkov",
+                        "shortName": "A. Barkov",
+                        "links": [
+                          {
+                            "rel": [
+                              "playercard",
+                              "desktop",
+                              "athlete"
+                            ],
+                            "href": "https://www.espn.com/nhl/player/_/id/3041970"
+                          }
+                        ],
+                        "headshot": "https://a.espncdn.com/i/headshots/nhl/players/full/3041970.png",
+                        "jersey": "16",
+                        "position": {
+                          "abbreviation": "C"
+                        },
+                        "team": {
+                          "id": "26"
+                        },
+                        "active": true
+                      },
+                      "team": {
+                        "id": "26"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "points",
+                  "displayName": "Points",
+                  "shortDisplayName": "Points",
+                  "abbreviation": "PTS",
+                  "leaders": [
+                    {
+                      "displayValue": "1",
+                      "value": 1.0,
+                      "athlete": {
+                        "id": "3114722",
+                        "fullName": "Sam Reinhart",
+                        "displayName": "Sam Reinhart",
+                        "shortName": "S. Reinhart",
+                        "links": [
+                          {
+                            "rel": [
+                              "playercard",
+                              "desktop",
+                              "athlete"
+                            ],
+                            "href": "https://www.espn.com/nhl/player/_/id/3114722"
+                          }
+                        ],
+                        "headshot": "https://a.espncdn.com/i/headshots/nhl/players/full/3114722.png",
+                        "jersey": "13",
+                        "position": {
+                          "abbreviation": "C"
+                        },
+                        "team": {
+                          "id": "26"
+                        },
+                        "active": true
+                      },
+                      "team": {
+                        "id": "26"
+                      }
+                    }
+                  ]
                 }
               ],
               "probables": [
@@ -543,27 +733,30 @@
                 ],
                 "logo": "https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/mtl.png"
               },
-              "score": "0",
+              "score": "2",
               "linescores": [
                 {
-                  "value": 0.0
+                  "value": 1.0
+                },
+                {
+                  "value": 1.0
                 }
               ],
               "statistics": [
                 {
                   "name": "saves",
                   "abbreviation": "SV",
-                  "displayValue": "3"
+                  "displayValue": "12"
                 },
                 {
                   "name": "savePct",
                   "abbreviation": "SV%",
-                  "displayValue": "1.000"
+                  "displayValue": ".923"
                 },
                 {
                   "name": "goals",
                   "abbreviation": "G",
-                  "displayValue": "0"
+                  "displayValue": "2"
                 },
                 {
                   "name": "ytdGoals",
@@ -573,12 +766,296 @@
                 {
                   "name": "assists",
                   "abbreviation": "A",
-                  "displayValue": "0"
+                  "displayValue": "2"
                 },
                 {
                   "name": "points",
                   "abbreviation": "PTS",
-                  "displayValue": "0"
+                  "displayValue": "4"
+                }
+              ],
+              "leaders": [
+                {
+                  "name": "goals",
+                  "displayName": "Goals",
+                  "shortDisplayName": "Goals",
+                  "abbreviation": "G",
+                  "leaders": [
+                    {
+                      "displayValue": "1",
+                      "value": 1.0,
+                      "athlete": {
+                        "id": "4024820",
+                        "fullName": "Patrik Laine",
+                        "displayName": "Patrik Laine",
+                        "shortName": "P. Laine",
+                        "links": [
+                          {
+                            "rel": [
+                              "playercard",
+                              "desktop",
+                              "athlete"
+                            ],
+                            "href": "https://www.espn.com/nhl/player/_/id/4024820"
+                          }
+                        ],
+                        "headshot": "https://a.espncdn.com/i/headshots/nhl/players/full/4024820.png",
+                        "jersey": "92",
+                        "position": {
+                          "abbreviation": "RW"
+                        },
+                        "team": {
+                          "id": "10"
+                        },
+                        "active": true
+                      },
+                      "team": {
+                        "id": "10"
+                      },
+                      "statistics": [
+                        {
+                          "name": "saves",
+                          "displayName": "Saves",
+                          "shortDisplayName": "Saves",
+                          "description": "Total saves.",
+                          "abbreviation": "SV",
+                          "value": 0.0,
+                          "displayValue": "0"
+                        },
+                        {
+                          "name": "savePct",
+                          "displayName": "Save Percentage",
+                          "shortDisplayName": "Save Percentage",
+                          "description": "Percentage of shots saved.",
+                          "abbreviation": "SV%",
+                          "value": 0.0,
+                          "displayValue": ".000"
+                        },
+                        {
+                          "name": "plusMinus",
+                          "displayName": "Plus/Minus Rating",
+                          "shortDisplayName": "Plus/Minus",
+                          "description": "Plus/Minus Rating",
+                          "abbreviation": "+/-",
+                          "value": 0.0,
+                          "displayValue": "0"
+                        },
+                        {
+                          "name": "goals",
+                          "displayName": "Goals",
+                          "shortDisplayName": "Goals",
+                          "description": "Total goals scored.",
+                          "abbreviation": "G",
+                          "value": 1.0,
+                          "displayValue": "1"
+                        },
+                        {
+                          "name": "ytdGoals",
+                          "displayName": "Year to Date Goals",
+                          "shortDisplayName": "Year to Date Goals",
+                          "description": "Year to date goals/",
+                          "abbreviation": "YTDG",
+                          "value": 19.0,
+                          "displayValue": "19"
+                        },
+                        {
+                          "name": "assists",
+                          "displayName": "Assists",
+                          "shortDisplayName": "Assists",
+                          "description": "Total goal assists.",
+                          "abbreviation": "A",
+                          "value": 0.0,
+                          "displayValue": "0"
+                        },
+                        {
+                          "name": "points",
+                          "displayName": "Points",
+                          "shortDisplayName": "Points",
+                          "description": "Points",
+                          "abbreviation": "PTS",
+                          "value": 1.0,
+                          "displayValue": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "displayValue": "1",
+                      "value": 1.0,
+                      "athlete": {
+                        "id": "4915349",
+                        "fullName": "Juraj Slafkovsky",
+                        "displayName": "Juraj Slafkovsky",
+                        "shortName": "J. Slafkovsky",
+                        "links": [
+                          {
+                            "rel": [
+                              "playercard",
+                              "desktop",
+                              "athlete"
+                            ],
+                            "href": "https://www.espn.com/nhl/player/_/id/4915349"
+                          }
+                        ],
+                        "headshot": "https://a.espncdn.com/i/headshots/nhl/players/full/4915349.png",
+                        "jersey": "20",
+                        "position": {
+                          "abbreviation": "LW"
+                        },
+                        "team": {
+                          "id": "10"
+                        },
+                        "active": true
+                      },
+                      "team": {
+                        "id": "10"
+                      },
+                      "statistics": [
+                        {
+                          "name": "saves",
+                          "displayName": "Saves",
+                          "shortDisplayName": "Saves",
+                          "description": "Total saves.",
+                          "abbreviation": "SV",
+                          "value": 0.0,
+                          "displayValue": "0"
+                        },
+                        {
+                          "name": "savePct",
+                          "displayName": "Save Percentage",
+                          "shortDisplayName": "Save Percentage",
+                          "description": "Percentage of shots saved.",
+                          "abbreviation": "SV%",
+                          "value": 0.0,
+                          "displayValue": ".000"
+                        },
+                        {
+                          "name": "plusMinus",
+                          "displayName": "Plus/Minus Rating",
+                          "shortDisplayName": "Plus/Minus",
+                          "description": "Plus/Minus Rating",
+                          "abbreviation": "+/-",
+                          "value": 0.0,
+                          "displayValue": "0"
+                        },
+                        {
+                          "name": "goals",
+                          "displayName": "Goals",
+                          "shortDisplayName": "Goals",
+                          "description": "Total goals scored.",
+                          "abbreviation": "G",
+                          "value": 1.0,
+                          "displayValue": "1"
+                        },
+                        {
+                          "name": "ytdGoals",
+                          "displayName": "Year to Date Goals",
+                          "shortDisplayName": "Year to Date Goals",
+                          "description": "Year to date goals/",
+                          "abbreviation": "YTDG",
+                          "value": 17.0,
+                          "displayValue": "17"
+                        },
+                        {
+                          "name": "assists",
+                          "displayName": "Assists",
+                          "shortDisplayName": "Assists",
+                          "description": "Total goal assists.",
+                          "abbreviation": "A",
+                          "value": 0.0,
+                          "displayValue": "0"
+                        },
+                        {
+                          "name": "points",
+                          "displayName": "Points",
+                          "shortDisplayName": "Points",
+                          "description": "Points",
+                          "abbreviation": "PTS",
+                          "value": 1.0,
+                          "displayValue": "1"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "assists",
+                  "displayName": "Assists",
+                  "shortDisplayName": "Assists",
+                  "abbreviation": "A",
+                  "leaders": [
+                    {
+                      "displayValue": "1",
+                      "value": 1.0,
+                      "athlete": {
+                        "id": "4233594",
+                        "fullName": "Nick Suzuki",
+                        "displayName": "Nick Suzuki",
+                        "shortName": "N. Suzuki",
+                        "links": [
+                          {
+                            "rel": [
+                              "playercard",
+                              "desktop",
+                              "athlete"
+                            ],
+                            "href": "https://www.espn.com/nhl/player/_/id/4233594"
+                          }
+                        ],
+                        "headshot": "https://a.espncdn.com/i/headshots/nhl/players/full/4233594.png",
+                        "jersey": "14",
+                        "position": {
+                          "abbreviation": "C"
+                        },
+                        "team": {
+                          "id": "10"
+                        },
+                        "active": true
+                      },
+                      "team": {
+                        "id": "10"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "points",
+                  "displayName": "Points",
+                  "shortDisplayName": "Points",
+                  "abbreviation": "PTS",
+                  "leaders": [
+                    {
+                      "displayValue": "1",
+                      "value": 1.0,
+                      "athlete": {
+                        "id": "4024820",
+                        "fullName": "Patrik Laine",
+                        "displayName": "Patrik Laine",
+                        "shortName": "P. Laine",
+                        "links": [
+                          {
+                            "rel": [
+                              "playercard",
+                              "desktop",
+                              "athlete"
+                            ],
+                            "href": "https://www.espn.com/nhl/player/_/id/4024820"
+                          }
+                        ],
+                        "headshot": "https://a.espncdn.com/i/headshots/nhl/players/full/4024820.png",
+                        "jersey": "92",
+                        "position": {
+                          "abbreviation": "RW"
+                        },
+                        "team": {
+                          "id": "10"
+                        },
+                        "active": true
+                      },
+                      "team": {
+                        "id": "10"
+                      }
+                    }
+                  ]
                 }
               ],
               "probables": [
@@ -648,7 +1125,7 @@
           "notes": [],
           "situation": {
             "lastPlay": {
-              "id": "401688769000000170",
+              "id": "401688769000005740",
               "type": {
                 "id": "516",
                 "text": "Stoppage",
@@ -659,17 +1136,17 @@
             }
           },
           "status": {
-            "clock": 995.0,
-            "displayClock": "16:35",
-            "period": 1,
+            "clock": 487.0,
+            "displayClock": "8:07",
+            "period": 2,
             "type": {
               "id": "2",
               "name": "STATUS_IN_PROGRESS",
               "state": "in",
               "completed": false,
               "description": "In Progress",
-              "detail": "16:35 - 1st Period",
-              "shortDetail": "16:35 - 1st"
+              "detail": "8:07 - 2nd Period",
+              "shortDetail": "8:07 - 2nd"
             }
           },
           "broadcasts": [
@@ -758,6 +1235,18 @@
         {
           "language": "en-US",
           "rel": [
+            "highlights",
+            "desktop"
+          ],
+          "href": "https://www.espn.com/nhl/video?gameId=401688769",
+          "text": "Highlights",
+          "shortText": "Highlights",
+          "isExternal": false,
+          "isPremium": false
+        },
+        {
+          "language": "en-US",
+          "rel": [
             "pbp",
             "desktop",
             "event"
@@ -770,17 +1259,17 @@
         }
       ],
       "status": {
-        "clock": 995.0,
-        "displayClock": "16:35",
-        "period": 1,
+        "clock": 487.0,
+        "displayClock": "8:07",
+        "period": 2,
         "type": {
           "id": "2",
           "name": "STATUS_IN_PROGRESS",
           "state": "in",
           "completed": false,
           "description": "In Progress",
-          "detail": "16:35 - 1st Period",
-          "shortDetail": "16:35 - 1st"
+          "detail": "8:07 - 2nd Period",
+          "shortDetail": "8:07 - 2nd"
         }
       }
     },
@@ -808,7 +1297,7 @@
           "timeValid": true,
           "neutralSite": false,
           "playByPlayAvailable": false,
-          "recent": false,
+          "recent": true,
           "venue": {
             "id": "1823",
             "fullName": "Capital One Arena",
@@ -930,10 +1419,10 @@
                     }
                   },
                   "status": {
-                    "id": "101",
-                    "name": "Expected",
-                    "type": "expected",
-                    "abbreviation": "Expected"
+                    "id": "102",
+                    "name": "Confirmed",
+                    "type": "confirmed",
+                    "abbreviation": "Confirmed"
                   },
                   "statistics": [],
                   "record": ""
@@ -1415,13 +1904,13 @@
                   "abbreviation": "A",
                   "leaders": [
                     {
-                      "displayValue": "34",
-                      "value": 34.0,
+                      "displayValue": "44",
+                      "value": 44.0,
                       "athlete": {
-                        "id": "4697438",
-                        "fullName": "JJ Peterka",
-                        "displayName": "JJ Peterka",
-                        "shortName": "J. Peterka",
+                        "id": "4294163",
+                        "fullName": "Rasmus Dahlin",
+                        "displayName": "Rasmus Dahlin",
+                        "shortName": "R. Dahlin",
                         "links": [
                           {
                             "rel": [
@@ -1429,13 +1918,13 @@
                               "desktop",
                               "athlete"
                             ],
-                            "href": "https://www.espn.com/nhl/player/_/id/4697438"
+                            "href": "https://www.espn.com/nhl/player/_/id/4294163"
                           }
                         ],
-                        "headshot": "https://a.espncdn.com/i/headshots/nhl/players/full/4697438.png",
-                        "jersey": "77",
+                        "headshot": "https://a.espncdn.com/i/headshots/nhl/players/full/4294163.png",
+                        "jersey": "26",
                         "position": {
-                          "abbreviation": "RW"
+                          "abbreviation": "D"
                         },
                         "team": {
                           "id": "2"
@@ -1584,8 +2073,8 @@
           },
           "tickets": [
             {
-              "summary": "Tickets as low as $36",
-              "numberAvailable": 644,
+              "summary": "Tickets as low as $41",
+              "numberAvailable": 505,
               "links": [
                 {
                   "href": "https://www.vividseats.com/washington-capitals-tickets-capital-one-arena-3-30-2025--sports-nhl-hockey/production/5064425?wsUser=717"
@@ -1654,7 +2143,7 @@
                 "name": "ESPN BET",
                 "priority": 1
               },
-              "details": "WSH -320",
+              "details": "WSH -300",
               "overUnder": 6.5,
               "spread": -1.5,
               "awayTeamOdds": {
@@ -1709,23 +2198,23 @@
               },
               "current": {
                 "over": {
-                  "value": 2.1,
-                  "displayValue": "11/10",
-                  "alternateDisplayValue": "+110",
-                  "decimal": 2.1,
-                  "fraction": "11/10",
-                  "american": "+110",
+                  "value": 2.15,
+                  "displayValue": "23/20",
+                  "alternateDisplayValue": "+115",
+                  "decimal": 2.15,
+                  "fraction": "23/20",
+                  "american": "+115",
                   "outcome": {
                     "type": "pending"
                   }
                 },
                 "under": {
-                  "value": 1.769,
-                  "displayValue": "10/13",
-                  "alternateDisplayValue": "-130",
-                  "decimal": 1.769,
-                  "fraction": "10/13",
-                  "american": "-130",
+                  "value": 1.741,
+                  "displayValue": "20/27",
+                  "alternateDisplayValue": "-135",
+                  "decimal": 1.741,
+                  "fraction": "20/27",
+                  "american": "-135",
                   "outcome": {
                     "type": "pending"
                   }
@@ -1794,7 +2283,7 @@
           "timeValid": true,
           "neutralSite": false,
           "playByPlayAvailable": false,
-          "recent": false,
+          "recent": true,
           "venue": {
             "id": "1397",
             "fullName": "Canada Life Centre",
@@ -2563,8 +3052,8 @@
           },
           "tickets": [
             {
-              "summary": "Tickets as low as $63",
-              "numberAvailable": 80,
+              "summary": "Tickets as low as $77",
+              "numberAvailable": 22,
               "links": [
                 {
                   "href": "https://www.vividseats.com/winnipeg-jets-tickets-canada-life-centre-3-30-2025--sports-nhl-hockey/production/5064614?wsUser=717"
@@ -2841,12 +3330,12 @@
                   "displayName": "Probable Starting Goalie",
                   "shortDisplayName": "Starter",
                   "abbreviation": "SG",
-                  "playerId": 4565234,
+                  "playerId": 4894729,
                   "athlete": {
-                    "id": "4565234",
-                    "fullName": "Spencer Knight",
-                    "displayName": "Spencer Knight",
-                    "shortName": "S. Knight",
+                    "id": "4894729",
+                    "fullName": "Arvid Soderblom",
+                    "displayName": "Arvid Soderblom",
+                    "shortName": "A. Soderblom",
                     "links": [
                       {
                         "rel": [
@@ -2854,21 +3343,21 @@
                           "desktop",
                           "athlete"
                         ],
-                        "href": "https://www.espn.com/nhl/player/_/id/4565234"
+                        "href": "https://www.espn.com/nhl/player/_/id/4894729"
                       }
                     ],
-                    "headshot": "https://a.espncdn.com/i/headshots/nhl/players/full/4565234.png",
-                    "jersey": "30",
+                    "headshot": "https://a.espncdn.com/i/headshots/nhl/players/full/4894729.png",
+                    "jersey": "40",
                     "position": "G",
                     "team": {
                       "id": "4"
                     }
                   },
                   "status": {
-                    "id": "101",
-                    "name": "Expected",
-                    "type": "expected",
-                    "abbreviation": "Expected"
+                    "id": "102",
+                    "name": "Confirmed",
+                    "type": "confirmed",
+                    "abbreviation": "Confirmed"
                   },
                   "statistics": [],
                   "record": ""
@@ -3519,8 +4008,8 @@
           },
           "tickets": [
             {
-              "summary": "Tickets as low as $35",
-              "numberAvailable": 419,
+              "summary": "Tickets as low as $33",
+              "numberAvailable": 554,
               "links": [
                 {
                   "href": "https://www.vividseats.com/chicago-blackhawks-tickets-united-center-3-30-2025--sports-nhl-hockey/production/5064624?wsUser=717"
@@ -4504,7 +4993,7 @@
           },
           "tickets": [
             {
-              "summary": "Tickets as low as $21",
+              "summary": "Tickets as low as $22",
               "numberAvailable": 570,
               "links": [
                 {
@@ -5475,8 +5964,8 @@
           },
           "tickets": [
             {
-              "summary": "Tickets as low as $49",
-              "numberAvailable": 256,
+              "summary": "Tickets as low as $45",
+              "numberAvailable": 473,
               "links": [
                 {
                   "href": "https://www.vividseats.com/carolina-hurricanes-tickets-pnc-arena-3-30-2025--sports-nhl-hockey/production/5064160?wsUser=717"
@@ -5545,7 +6034,7 @@
                 "name": "ESPN BET",
                 "priority": 1
               },
-              "details": "CAR -340",
+              "details": "CAR -360",
               "overUnder": 5.5,
               "spread": -1.5,
               "awayTeamOdds": {
@@ -6461,8 +6950,8 @@
           },
           "tickets": [
             {
-              "summary": "Tickets as low as $32",
-              "numberAvailable": 540,
+              "summary": "Tickets as low as $31",
+              "numberAvailable": 477,
               "links": [
                 {
                   "href": "https://www.vividseats.com/anaheim-ducks-tickets-honda-center-3-30-2025--sports-nhl-hockey/production/5063776?wsUser=717"
@@ -6586,23 +7075,23 @@
               },
               "current": {
                 "over": {
-                  "value": 2.0,
-                  "displayValue": "1/1",
-                  "alternateDisplayValue": "EVEN",
-                  "decimal": 2.0,
-                  "fraction": "1/1",
-                  "american": "EVEN",
+                  "value": 2.05,
+                  "displayValue": "21/20",
+                  "alternateDisplayValue": "+105",
+                  "decimal": 2.05,
+                  "fraction": "21/20",
+                  "american": "+105",
                   "outcome": {
                     "type": "pending"
                   }
                 },
                 "under": {
-                  "value": 1.833,
-                  "displayValue": "5/6",
-                  "alternateDisplayValue": "-120",
-                  "decimal": 1.833,
-                  "fraction": "5/6",
-                  "american": "-120",
+                  "value": 1.8,
+                  "displayValue": "4/5",
+                  "alternateDisplayValue": "-125",
+                  "decimal": 1.8,
+                  "fraction": "4/5",
+                  "american": "-125",
                   "outcome": {
                     "type": "pending"
                   }
@@ -7440,8 +7929,8 @@
           },
           "tickets": [
             {
-              "summary": "Tickets as low as $50",
-              "numberAvailable": 485,
+              "summary": "Tickets as low as $40",
+              "numberAvailable": 421,
               "links": [
                 {
                   "href": "https://www.vividseats.com/los-angeles-kings-tickets-cryptocom-arena-3-30-2025--sports-nhl-hockey/production/5064100?wsUser=717"

@@ -94,6 +94,7 @@ func (e *EspnProvider) GetScores(sport providers.Sport, league providers.League,
 
 			m.Segment = competition.Status.Period
 			m.SegmentUnit = "period"
+			m.SegmentClock = competition.Status.DisplayClock
 
 			parsedState, err := strconv.Atoi(competition.Status.Type.ID)
 			if err != nil {
