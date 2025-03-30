@@ -22,3 +22,16 @@ type Match struct {
 	Start        time.Time
 	State        MatchState
 }
+
+func (m MatchState) String() string {
+	switch m {
+	case Scheduled:
+		return "Scheduled"
+	case Ongoing:
+		return "Ongoing"
+	case Finished:
+		return "Finished"
+	}
+
+	return "Undefined"
+}

@@ -41,9 +41,19 @@ func main() {
 func printTable(matches []models.Match) {
 	t := table.NewWriter()
 	t.SetOutputMirror(os.Stdout)
-	t.AppendHeader(table.Row{"Home", "Away", "Status", "Start (Local)", "Period", "Clock"})
+	t.AppendHeader(table.Row{"Home", "Away", "Status", "Period / Start", "Clock", "Score"})
 	for _, m := range matches {
-		t.AppendRow(table.Row{m.Home.Slug, m.Away.Slug, m.State, m.Start.Local().Format(time.Kitchen), m.Segment, m.SegmentClock})
+		var periodOrStart string
+
+		if m.Segment == 0 {
+			periodOrStart = m.Start.Local().Format(time.Kitchen)
+		} else {
+			periodOrStart = fmt.Sprint(m.Segment)
+		}
+
+		score := fmt.Sprintf("%4s %d - %4s %d", m.Home.Slug, m.HomePoints, m.Away.Slug, m.AwayPoints)
+
+		t.AppendRow(table.Row{m.Home.Slug, m.Away.Slug, m.State, periodOrStart, m.SegmentClock, score})
 	}
 	t.Render()
 }
