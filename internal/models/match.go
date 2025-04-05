@@ -1,6 +1,24 @@
 package models
 
-import "time"
+import (
+	"fmt"
+	"time"
+)
+
+type GameDate struct {
+	t time.Time
+}
+
+func NewGameDate(t *time.Time) GameDate {
+	if t == nil {
+		x := time.Now()
+		t = &x
+	}
+	return GameDate{t: *t}
+}
+func (g GameDate) String() string {
+	return fmt.Sprintf("%d%02d%02d", g.t.Year(), g.t.Month(), g.t.Day())
+}
 
 type MatchState uint8
 

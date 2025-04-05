@@ -26,7 +26,7 @@ func (e *EspnProvider) GetName() string {
 }
 
 // GetScores implements providers.Provider.
-func (e *EspnProvider) GetScores(sport providers.Sport, league providers.League, date time.Time) []models.Match {
+func (e *EspnProvider) GetScores(sport providers.Sport, league providers.League, date models.GameDate) []models.Match {
 
 	matches := []models.Match{}
 
