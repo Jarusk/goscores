@@ -7,9 +7,9 @@ import (
 	"os"
 	"time"
 
-	"github.com/jarusk/goscore/internal/models"
-	"github.com/jarusk/goscore/internal/providers"
-	"github.com/jarusk/goscore/internal/providers/espn"
+	"github.com/jarusk/goscores/internal/models"
+	"github.com/jarusk/goscores/internal/providers"
+	"github.com/jarusk/goscores/internal/providers/espn"
 	"github.com/jedib0t/go-pretty/v6/table"
 	"github.com/spf13/cobra"
 )

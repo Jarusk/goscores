@@ -1,7 +1,7 @@
 package providers
 
 import (
-	"github.com/jarusk/goscore/internal/models"
+	"github.com/jarusk/goscores/internal/models"
 )
 
 type Sport string

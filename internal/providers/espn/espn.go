@@ -9,8 +9,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/jarusk/goscore/internal/models"
-	"github.com/jarusk/goscore/internal/providers"
+	"github.com/jarusk/goscores/internal/models"
+	"github.com/jarusk/goscores/internal/providers"
 )
 
 // Compile-time interface check

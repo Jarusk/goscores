@@ -3,7 +3,7 @@ package espn
 import (
 	"fmt"
 
-	"github.com/jarusk/goscore/internal/providers"
+	"github.com/jarusk/goscores/internal/providers"
 )
 
 func getScoreboardURL(sport providers.Sport, league providers.League) string {
