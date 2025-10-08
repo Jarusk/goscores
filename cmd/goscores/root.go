@@ -19,7 +19,10 @@ var rootCmd = &cobra.Command{
 	Short: "goscores gives you the latest sports scores",
 	Long:  `A tool for fetching the latest sports scores on the CLI`,
 	Run: func(cmd *cobra.Command, args []string) {
-		cmd.Help()
+		err := cmd.Help()
+		if err != nil {
+			fmt.Printf("failed to print help: %v\n", err)
+		}
 	},
 }
 
