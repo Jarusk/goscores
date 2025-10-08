@@ -2,6 +2,7 @@ package espn
 
 import (
 	"encoding/json"
+	"fmt"
 	"io"
 	"log/slog"
 	"net/http"
@@ -43,7 +44,7 @@ func (e *EspnProvider) GetScores(sport providers.Sport, league providers.League,
 	}
 	defer resp.Body.Close()
 
-	var parsed scoreboard
+	var parsed hockeyScoreboard
 
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
@@ -124,4 +125,8 @@ func parseTimestamp(timestamp string) time.Time {
 		)
 	}
 	return start
+}
+
+func getScoreboardURL(sport providers.Sport, league providers.League) string {
+	return fmt.Sprintf("https://site.api.espn.com/apis/site/v2/sports/%s/%s/scoreboard", sport, league)
 }

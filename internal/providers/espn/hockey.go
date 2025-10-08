@@ -1,17 +1,7 @@
 package espn
 
-import (
-	"fmt"
-
-	"github.com/jarusk/goscores/internal/providers"
-)
-
-func getScoreboardURL(sport providers.Sport, league providers.League) string {
-	return fmt.Sprintf("https://site.api.espn.com/apis/site/v2/sports/%s/%s/scoreboard", sport, league)
-}
-
 // Auto-generated with json-to-go
-type scoreboard struct {
+type hockeyScoreboard struct {
 	Leagues []struct {
 		ID           string `json:"id,omitempty"`
 		UID          string `json:"uid,omitempty"`
