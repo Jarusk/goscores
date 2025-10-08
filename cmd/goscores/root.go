@@ -27,10 +27,11 @@ var rootCmd = &cobra.Command{
 }
 
 func init() {
+	rootCmd.AddCommand(baseballCmd)
 	rootCmd.AddCommand(hockeyCmd)
 }
 
-func run(sport, league, date string) {
+func run(sport providers.Sport, league providers.League, date string) {
 	g := models.NewGameDate(nil)
 
 	slog.SetLogLoggerLevel(slog.LevelDebug)
@@ -47,7 +48,7 @@ func run(sport, league, date string) {
 	slog.Debug("fetching scores",
 		"provider", provider.GetName(),
 	)
-	m := provider.GetScores(providers.Sport(sport), providers.League(league), g)
+	m := provider.GetScores(sport, league, g)
 	slog.Debug("finished fetching scores")
 
 	printTable(m)
