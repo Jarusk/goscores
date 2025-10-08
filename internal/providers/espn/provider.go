@@ -44,8 +44,6 @@ func (e *EspnProvider) GetScores(sport providers.Sport, league providers.League,
 	}
 	defer resp.Body.Close()
 
-	var parsed hockeyScoreboard
-
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		slog.Error("failed to read body to byte array",
@@ -55,8 +53,10 @@ func (e *EspnProvider) GetScores(sport providers.Sport, league providers.League,
 			"error", err,
 		)
 	}
-	err = json.Unmarshal(body, &parsed)
 
+	var parsed hockeyScoreboard
+
+	err = json.Unmarshal(body, &parsed)
 	if err != nil {
 		slog.Error("failed to parse response",
 			"provider", e.GetName(),
