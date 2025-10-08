@@ -1,8 +1,6 @@
 module github.com/jarusk/goscores
 
-go 1.23.0
-
-toolchain go1.24.5
+go 1.24.0
 
 require (
 	github.com/jedib0t/go-pretty/v6 v6.6.7
