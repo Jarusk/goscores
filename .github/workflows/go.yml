@@ -15,19 +15,22 @@ jobs:
     - name: Set up Go
       uses: actions/setup-go@v5
       with:
-        go-version: '1.24'
+        go-version: '1.25'
+    
+    - name: Setup golangci-lint
+      run: go install github.com/go-task/task/v3/cmd/task@latest
 
     - name: Setup tooling
-      run: make tooling
+      run: task tooling
+    
+    - name: Format
+      run: task fmt
 
     - name: Lint
-      run: make lint
+      run: task lint
 
     - name: Test
-      run: make test
-
-    # - name: Check Coverage
-    #   run: make check-coverage 
+      run: task test
 
     - name: Build
-      run: make build
+      run: task build
