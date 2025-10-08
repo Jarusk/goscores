@@ -4,12 +4,13 @@ A simple utility for fetching sports scores from the CLI.
 
 ## Development
 ### Requirements
-- `make`
-- `go` v1.22+
+- `task`: `go install github.com/go-task/task/v3/cmd/task@latest`
+- `go` v1.24+
+
 
 ### Building
 ```bash
-$ make build
+$ task build
 ```
 
 ### Running
