@@ -1,0 +1,90 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  SOURCES: ./...
+  BINARY: goscores
+  BINDIR: out
+  COVERAGE_REPORT: coverage.out
+
+env:
+  CGO_ENABLED: 0
+
+tasks:
+  default:
+    cmds:
+      - task: fmt
+      - task: lint
+      - task: build
+      - task: test
+
+  tooling:
+    cmds:
+      - go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+
+  build:
+    cmds:
+      - mkdir -p {{.BINDIR}}
+      - go build -buildvcs=true -o {{.BINDIR}}/ {{.SOURCES}}
+  
+  clean:
+    cmds:
+      - rm -rf {{.BINDIR}} {{.COVERAGE_REPORT}}
+      - go clean -cache -testcache
+
+  coverage:
+    deps:
+      - test
+    cmds:
+      - go tool cover -html={{.COVERAGE_REPORT}}
+
+  fmt:
+    cmds:
+      - gofmt -w .
+  
+  install:
+    cmds:
+      - go install -buildvcs=true {{.SOURCES}}
+  
+  lint:
+    cmds:
+      - golangci-lint run -v {{.SOURCES}}
+
+  run:
+    cmds:
+      - go run -buildvcs=true {{.SOURCES}} {{.CLI_ARGS}}
+  
+  test:
+    env:
+      CGO_ENABLED: 1
+    cmds:
+      -  go test -v -cover -coverprofile={{.COVERAGE_REPORT}} -race {{.SOURCES}}
+
+  tidy:
+    cmds:
+      - go mod tidy
+
+  vendor:
+    cmds:
+      - go mod vendor
+  
+  internal-update:
+    cmds:
+      - go get -d -u -t {{.SOURCES}}
+  
+  update:
+    cmds:
+      - task: internal-update
+      - task: vendor
+      - task: tidy
+
+
+# check-coverage: test-coverage
+# 	@echo "Get total coverage"
+# 	$(eval COVERED=$(shell go tool cover -func $(COVERAGE_REPORT) | grep total | awk '{print substr($$3, 1, length($$3)-1)}'))
+# 	@if [ "80.0" != "$(word 1, $(sort 80.0 $(COVERED)))" ]; then \
+# 		echo "Test coverage (${COVERED}%) is less than 80%";\
+# 		exit 1;\
+# 	fi
+

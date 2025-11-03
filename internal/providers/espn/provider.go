@@ -2,6 +2,7 @@ package espn
 
 import (
 	"encoding/json"
+	"fmt"
 	"io"
 	"log/slog"
 	"net/http"
@@ -43,8 +44,6 @@ func (e *EspnProvider) GetScores(sport providers.Sport, league providers.League,
 	}
 	defer resp.Body.Close()
 
-	var parsed scoreboard
-
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		slog.Error("failed to read body to byte array",
@@ -54,8 +53,10 @@ func (e *EspnProvider) GetScores(sport providers.Sport, league providers.League,
 			"error", err,
 		)
 	}
-	err = json.Unmarshal(body, &parsed)
 
+	var parsed hockeyScoreboard
+
+	err = json.Unmarshal(body, &parsed)
 	if err != nil {
 		slog.Error("failed to parse response",
 			"provider", e.GetName(),
@@ -124,4 +125,8 @@ func parseTimestamp(timestamp string) time.Time {
 		)
 	}
 	return start
+}
+
+func getScoreboardURL(sport providers.Sport, league providers.League) string {
+	return fmt.Sprintf("https://site.api.espn.com/apis/site/v2/sports/%s/%s/scoreboard", sport, league)
 }
