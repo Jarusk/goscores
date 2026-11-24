@@ -11,6 +11,7 @@ type Writer interface {
 	AppendRow(row Row, configs ...RowConfig)
 	AppendRows(rows []Row, configs ...RowConfig)
 	AppendSeparator()
+	FilterBy(filterBy []FilterBy)
 	ImportGrid(grid interface{}) bool
 	Length() int
 	Pager(opts ...PagerOption) Pager
@@ -35,7 +36,7 @@ type Writer interface {
 	SuppressEmptyColumns()
 	SuppressTrailingSpaces()
 
-	// deprecated; in favor if Style().Size.WidthMax
+	// deprecated; in favor of Style().Size.WidthMax
 	SetAllowedRowLength(length int)
 	// deprecated; in favor of Style().HTML.CSSClass
 	SetHTMLCSSClass(cssClass string)
