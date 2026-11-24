@@ -11,9 +11,15 @@ import (
 
 // Transformer related constants
 const (
-	unixTimeMinMilliseconds = int64(10000000000)
-	unixTimeMinMicroseconds = unixTimeMinMilliseconds * 1000
-	unixTimeMinNanoSeconds  = unixTimeMinMicroseconds * 1000
+	// Pre-computed time conversion constants to avoid repeated calculations
+	nanosPerSecond  = int64(time.Second)
+	microsPerSecond = nanosPerSecond / 1000
+	millisPerSecond = nanosPerSecond / 1000000
+
+	// Thresholds for detecting unix timestamp units (10 seconds worth in each unit)
+	unixTimeMinMilliseconds = 10 * nanosPerSecond
+	unixTimeMinMicroseconds = 10 * nanosPerSecond * 1000
+	unixTimeMinNanoSeconds  = 10 * nanosPerSecond * 1000000
 )
 
 // Transformer related variables
@@ -40,94 +46,71 @@ type Transformer func(val interface{}) string
 //   - transforms the number as directed by 'format' (ex.: %.2f)
 //   - colors negative values Red
 //   - colors positive values Green
+//
+//gocyclo:ignore
 func NewNumberTransformer(format string) Transformer {
+	// Pre-compute negative format string to avoid repeated allocations; the
+	// "-" takes the place of any sign that the format asks for
+	negFormat := "-" + formatWithoutSignFlags(format)
+
+	transformInt64 := func(val int64) string {
+		if val < 0 {
+			return colorsNumberNegative.Sprintf(negFormat, -uint64(val))
+		}
+		if val > 0 {
+			return colorsNumberPositive.Sprintf(format, val)
+		}
+		return colorsNumberZero.Sprintf(format, val)
+	}
+
+	transformUint64 := func(val uint64) string {
+		if val > 0 {
+			return colorsNumberPositive.Sprintf(format, val)
+		}
+		return colorsNumberZero.Sprintf(format, val)
+	}
+
+	transformFloat64 := func(val float64) string {
+		if val < 0 {
+			return colorsNumberNegative.Sprintf(negFormat, -val)
+		}
+		if val > 0 {
+			return colorsNumberPositive.Sprintf(format, val)
+		}
+		return colorsNumberZero.Sprintf(format, val)
+	}
+
+	// Use type switch for O(1) type checking instead of sequential type assertions
 	return func(val interface{}) string {
-		if valStr := transformInt(format, val); valStr != "" {
-			return valStr
+		switch v := val.(type) {
+		case int:
+			return transformInt64(int64(v))
+		case int8:
+			return transformInt64(int64(v))
+		case int16:
+			return transformInt64(int64(v))
+		case int32:
+			return transformInt64(int64(v))
+		case int64:
+			return transformInt64(v)
+		case uint:
+			return transformUint64(uint64(v))
+		case uint8:
+			return transformUint64(uint64(v))
+		case uint16:
+			return transformUint64(uint64(v))
+		case uint32:
+			return transformUint64(uint64(v))
+		case uint64:
+			return transformUint64(v)
+		case float32:
+			return transformFloat64(float64(v))
+		case float64:
+			return transformFloat64(v)
+		default:
+			return fmt.Sprint(val)
 		}
-		if valStr := transformUint(format, val); valStr != "" {
-			return valStr
-		}
-		if valStr := transformFloat(format, val); valStr != "" {
-			return valStr
-		}
-		return fmt.Sprint(val)
 	}
-}
-
-func transformInt(format string, val interface{}) string {
-	transform := func(val int64) string {
-		if val < 0 {
-			return colorsNumberNegative.Sprintf("-"+format, -val)
-		}
-		if val > 0 {
-			return colorsNumberPositive.Sprintf(format, val)
-		}
-		return colorsNumberZero.Sprintf(format, val)
-	}
-
-	if number, ok := val.(int); ok {
-		return transform(int64(number))
-	}
-	if number, ok := val.(int8); ok {
-		return transform(int64(number))
-	}
-	if number, ok := val.(int16); ok {
-		return transform(int64(number))
-	}
-	if number, ok := val.(int32); ok {
-		return transform(int64(number))
-	}
-	if number, ok := val.(int64); ok {
-		return transform(number)
-	}
-	return ""
-}
-
-func transformUint(format string, val interface{}) string {
-	transform := func(val uint64) string {
-		if val > 0 {
-			return colorsNumberPositive.Sprintf(format, val)
-		}
-		return colorsNumberZero.Sprintf(format, val)
-	}
-
-	if number, ok := val.(uint); ok {
-		return transform(uint64(number))
-	}
-	if number, ok := val.(uint8); ok {
-		return transform(uint64(number))
-	}
-	if number, ok := val.(uint16); ok {
-		return transform(uint64(number))
-	}
-	if number, ok := val.(uint32); ok {
-		return transform(uint64(number))
-	}
-	if number, ok := val.(uint64); ok {
-		return transform(number)
-	}
-	return ""
-}
-
-func transformFloat(format string, val interface{}) string {
-	transform := func(val float64) string {
-		if val < 0 {
-			return colorsNumberNegative.Sprintf("-"+format, -val)
-		}
-		if val > 0 {
-			return colorsNumberPositive.Sprintf(format, val)
-		}
-		return colorsNumberZero.Sprintf(format, val)
-	}
-
-	if number, ok := val.(float32); ok {
-		return transform(float64(number))
-	}
-	if number, ok := val.(float64); ok {
-		return transform(number)
-	}
-	return ""
 }
 
 // NewJSONTransformer returns a Transformer that can format a JSON string or an
@@ -135,8 +118,13 @@ func transformFloat(format string, val interface{}) string {
 func NewJSONTransformer(prefix string, indent string) Transformer {
 	return func(val interface{}) string {
 		if valStr, ok := val.(string); ok {
+			valStr = strings.TrimSpace(valStr)
+			// Validate JSON before attempting to indent to avoid unnecessary processing
+			if !json.Valid([]byte(valStr)) {
+				return fmt.Sprintf("%#v", valStr)
+			}
 			var b bytes.Buffer
-			if err := json.Indent(&b, []byte(strings.TrimSpace(valStr)), prefix, indent); err == nil {
+			if err := json.Indent(&b, []byte(valStr), prefix, indent); err == nil {
 				return b.String()
 			}
 		} else if b, err := json.MarshalIndent(val, prefix, indent); err == nil {
@@ -154,17 +142,17 @@ func NewJSONTransformer(prefix string, indent string) Transformer {
 // location (use time.Local to get localized timestamps).
 func NewTimeTransformer(layout string, location *time.Location) Transformer {
 	return func(val interface{}) string {
-		rsp := fmt.Sprint(val)
+		// Check for time.Time first to avoid unnecessary fmt.Sprint conversion
 		if valTime, ok := val.(time.Time); ok {
-			rsp = formatTime(valTime, layout, location)
-		} else {
-			// cycle through some supported layouts to see if the string form
-			// of the object matches any of these layouts
-			for _, possibleTimeLayout := range possibleTimeLayouts {
-				if valTime, err := time.Parse(possibleTimeLayout, rsp); err == nil {
-					rsp = formatTime(valTime, layout, location)
-					break
-				}
+			return formatTime(valTime, layout, location)
+		}
+		// Only convert to string if not already time.Time
+		rsp := fmt.Sprint(val)
+		// Cycle through some supported layouts to see if the string form
+		// of the object matches any of these layouts
+		for _, possibleTimeLayout := range possibleTimeLayouts {
+			if valTime, err := time.Parse(possibleTimeLayout, rsp); err == nil {
+				return formatTime(valTime, layout, location)
 			}
 		}
 		return rsp
@@ -205,24 +193,66 @@ func NewURLTransformer(colors ...Color) Transformer {
 	}
 }
 
-func formatTime(t time.Time, layout string, location *time.Location) string {
-	rsp := ""
-	if t.Unix() > 0 {
-		if location != nil {
-			t = t.In(location)
-		}
-		rsp = t.Format(layout)
+// formatWithoutSignFlags returns the format with the flags that ask for a sign
+// ("+" and " ") removed from all its verbs.
+func formatWithoutSignFlags(format string) string {
+	if !strings.ContainsAny(format, "+ ") {
+		return format
 	}
-	return rsp
+
+	var out strings.Builder
+	for idx := 0; idx < len(format); idx++ {
+		out.WriteByte(format[idx])
+		if format[idx] != '%' {
+			continue
+		}
+		// "%%" is a percent sign, and not the beginning of a verb
+		if idx+1 < len(format) && format[idx+1] == '%' {
+			idx++
+			out.WriteByte(format[idx])
+			continue
+		}
+		// the flags come right after the "%"
+		for idx+1 < len(format) && strings.IndexByte("+-# 0", format[idx+1]) >= 0 {
+			idx++
+			if format[idx] != '+' && format[idx] != ' ' {
+				out.WriteByte(format[idx])
+			}
+		}
+	}
+	return out.String()
+}
+
+func formatTime(t time.Time, layout string, location *time.Location) string {
+	// the zero value and the epoch are what a time that was never set looks
+	// like; any other time, before or after the epoch, is a value
+	if t.IsZero() || t.Equal(time.Unix(0, 0)) {
+		return ""
+	}
+	if location != nil {
+		t = t.In(location)
+	}
+	return t.Format(layout)
 }
 
 func formatTimeUnix(unixTime int64, timeTransformer Transformer) string {
-	if unixTime >= unixTimeMinNanoSeconds {
-		unixTime = unixTime / time.Second.Nanoseconds()
-	} else if unixTime >= unixTimeMinMicroseconds {
-		unixTime = unixTime / (time.Second.Nanoseconds() / 1000)
-	} else if unixTime >= unixTimeMinMilliseconds {
-		unixTime = unixTime / (time.Second.Nanoseconds() / 1000000)
+	// find the unit from the magnitude, so that a timestamp before the epoch
+	// (a negative one) is read the same way as one after it
+	magnitude := uint64(unixTime)
+	if unixTime < 0 {
+		magnitude = -magnitude
 	}
-	return timeTransformer(time.Unix(unixTime, 0))
+	unitsPerSecond := int64(1)
+	if magnitude >= uint64(unixTimeMinNanoSeconds) {
+		unitsPerSecond = nanosPerSecond
+	} else if magnitude >= uint64(unixTimeMinMicroseconds) {
+		unitsPerSecond = microsPerSecond
+	} else if magnitude >= uint64(unixTimeMinMilliseconds) {
+		unitsPerSecond = millisPerSecond
+	}
+	// the remainder is negative for a negative timestamp, which time.Unix
+	// takes away from the seconds as it should
+	seconds := unixTime / unitsPerSecond
+	nanoseconds := (unixTime % unitsPerSecond) * (nanosPerSecond / unitsPerSecond)
+	return timeTransformer(time.Unix(seconds, nanoseconds))
 }
